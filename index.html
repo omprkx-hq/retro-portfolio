@@ -13,6 +13,10 @@
 <body>
 
   <!-- ══════════════════════ HUD / NAV ══════════════════════════ -->
+  <div id="scrollProgressBar" aria-hidden="true"></div>
+  <div id="customCursor" aria-hidden="true"></div>
+  <div id="customCursorFollower" aria-hidden="true"></div>
+
   <nav id="hud">
     <div class="hud-inner">
       <span class="hud-logo pixel">OP</span>
@@ -62,8 +66,8 @@
       </div>
 
       <h1 class="hero-title reveal">
-        <span class="pixel">OMPRAKASH</span>
-        <span class="pixel hero-sur">SAHOO</span>
+        <span class="pixel scramble-text" data-text="OMPRAKASH">OMPRAKASH</span>
+        <span class="pixel hero-sur scramble-text" data-text="SAHOO">SAHOO</span>
       </h1>
 
       <p class="hero-role reveal">
@@ -76,7 +80,7 @@
         Building strong programming and problem-solving skills while exploring modern web technologies.
       </p>
 
-      <a href="#projects" class="btn-pixel reveal">
+      <a href="#projects" class="btn-pixel reveal magnet-btn">
         <span class="pixel">▶ PRESS START</span>
       </a>
 
@@ -97,6 +101,32 @@
 
     </div>
   </section>
+
+  <!-- ══════════════════════ MARQUEE STRIP ═══════════════════ -->
+  <div class="marquee-wrapper" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-item pixel">C++ ENGINEER</span>
+      <span class="marquee-sep pixel">✦</span>
+      <span class="marquee-item pixel">PROBLEM SOLVER</span>
+      <span class="marquee-sep pixel">✦</span>
+      <span class="marquee-item pixel">WEB DEVELOPER</span>
+      <span class="marquee-sep pixel">✦</span>
+      <span class="marquee-item pixel">BHARATI VIDYAPEETH</span>
+      <span class="marquee-sep pixel">✦</span>
+      <span class="marquee-item pixel">CLEAN ARCHITECTURE</span>
+      <span class="marquee-sep pixel">✦</span>
+      <span class="marquee-item pixel">C++ ENGINEER</span>
+      <span class="marquee-sep pixel">✦</span>
+      <span class="marquee-item pixel">PROBLEM SOLVER</span>
+      <span class="marquee-sep pixel">✦</span>
+      <span class="marquee-item pixel">WEB DEVELOPER</span>
+      <span class="marquee-sep pixel">✦</span>
+      <span class="marquee-item pixel">BHARATI VIDYAPEETH</span>
+      <span class="marquee-sep pixel">✦</span>
+      <span class="marquee-item pixel">CLEAN ARCHITECTURE</span>
+      <span class="marquee-sep pixel">✦</span>
+    </div>
+  </div>
 
   <!-- ══════════════════════ ABOUT ══════════════════════════════ -->
   <section id="about" class="section">
@@ -247,10 +277,10 @@
 
       <div class="levels-grid">
 
-        <article class="level-card reveal" style="--delay:.00s">
+        <article class="level-card reveal tilt-card" style="--delay:.00s">
           <div class="level-badge pixel">01</div>
           <div class="level-status pixel completed">✔ CLEARED</div>
-          <h3 class="level-name pixel">RETRO PORTFOLIO</h3>
+          <h3 class="level-name pixel scramble-text" data-text="RETRO PORTFOLIO">RETRO PORTFOLIO</h3>
           <p class="level-desc">
             An 8-bit retro video game portfolio with smooth pixel-wipe theme transitions, 
             interactive HUD, security headers, and an authenticated admin panel.
@@ -266,7 +296,7 @@
             <span class="stars">★★★★★</span>
           </div>
           <div class="level-links">
-            <a href="https://github.com/omprkx-hq/retro-portfolio" target="_blank" rel="noopener" class="lvl-btn lvl-btn-ghost pixel">{ REPO }</a>
+            <a href="https://github.com/omprkx-hq/retro-portfolio" target="_blank" rel="noopener" class="lvl-btn lvl-btn-ghost pixel magnet-btn">{ REPO }</a>
           </div>
         </article>
 
