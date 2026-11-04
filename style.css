@@ -582,51 +582,66 @@ body.theme-transitioning * {
 }
 
 /* ── 11. POWER-UPS / SKILLS ──────────────────────────────────── */
-.powerup-grid {
+/* ── 11. TECHNICAL SKILLS GRID (CLEAN & PROFESSIONAL) ───────── */
+.skills-clean-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%,9rem), 1fr));
-  gap: 1.2rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+  gap: 1.5rem;
 }
 
-.powerup {
+.skill-clean-card {
   background: var(--card-bg);
   border: 2px solid var(--border);
   box-shadow: var(--shadow);
-  padding: 1.2rem 1rem;
+  padding: 1.6rem 1.4rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: .5rem;
-  text-align: center;
-  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
-  cursor: default;
+  gap: 0.75rem;
+  transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
-.powerup:hover {
-  transform: translate(-2px, -4px);
+.skill-clean-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--fg);
   box-shadow: var(--shadow-hover);
 }
 
-.pu-icon {
-  font-size: 1.8rem;
+.skill-clean-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.skill-clean-icon {
+  font-size: 1.5rem;
   line-height: 1;
-  filter: grayscale(1);
-  transition: filter var(--dur) var(--ease);
 }
-.powerup:hover .pu-icon { filter: grayscale(0); }
+.skill-clean-title {
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+}
+.skill-clean-desc {
+  font-size: 0.88rem;
+  color: var(--fg-muted);
+  line-height: 1.6;
+}
 
-.pu-name {
-  font-size: .45rem;
-  letter-spacing: .08em;
-  line-height: 1.4;
+/* ── Hero Actions ────────────────────────────────────────────── */
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
 }
-.pu-tier {
-  font-size: .38rem;
-  letter-spacing: .1em;
-  color: var(--fg-faint);
+.btn-pixel-outline {
+  background: transparent;
+  color: var(--fg);
+  border: 2px solid var(--border);
+  box-shadow: 4px 4px 0 var(--border);
 }
-.pu-stars {
-  font-size: .75rem;
-  letter-spacing: .05em;
+.btn-pixel-outline:hover {
+  border-color: var(--fg);
+  box-shadow: 6px 6px 0 var(--border);
   color: var(--fg);
 }
 

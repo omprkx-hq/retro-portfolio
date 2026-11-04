@@ -8,24 +8,19 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
 
   <!-- ══════════════════════ HUD / NAV ══════════════════════════ -->
   <nav id="hud">
     <div class="hud-inner">
-      <span class="hud-logo pixel">OP</span>
-
-      <div class="hud-score">
-        <span class="hud-label">SCORE</span>
-        <span class="hud-val pixel" id="scoreDisplay">000000</span>
-      </div>
+      <a href="#hero" class="hud-logo pixel">OP</a>
 
       <ul class="hud-links">
         <li><a href="#about">ABOUT</a></li>
         <li><a href="#skills">SKILLS</a></li>
-        <li><a href="#projects">LEVELS</a></li>
+        <li><a href="#projects">PROJECTS</a></li>
         <li><a href="#contact">CONTACT</a></li>
       </ul>
 
@@ -43,7 +38,7 @@
     <div class="mobile-menu" id="mobileMenu">
       <a href="#about"    class="mob-link">ABOUT</a>
       <a href="#skills"   class="mob-link">SKILLS</a>
-      <a href="#projects" class="mob-link">LEVELS</a>
+      <a href="#projects" class="mob-link">PROJECTS</a>
       <a href="#contact"  class="mob-link">CONTACT</a>
     </div>
   </nav>
@@ -51,14 +46,6 @@
   <!-- ══════════════════════ HERO ═══════════════════════════════ -->
   <section id="hero">
     <div class="hero-wrap">
-
-      <div class="hero-insert pixel reveal">INSERT COIN</div>
-
-      <div class="hero-lives reveal">
-        <span class="life">♥</span>
-        <span class="life">♥</span>
-        <span class="life">♥</span>
-      </div>
 
       <h1 class="hero-title reveal">
         <span class="pixel">OMPRAKASH</span>
@@ -75,9 +62,14 @@
         Building strong programming and problem-solving skills while exploring modern web technologies.
       </p>
 
-      <a href="#projects" class="btn-pixel reveal">
-        <span class="pixel">▶ EXPLORE WORK</span>
-      </a>
+      <div class="hero-actions reveal">
+        <a href="#projects" class="btn-pixel">
+          <span class="pixel">VIEW PROJECTS</span>
+        </a>
+        <a href="#contact" class="btn-pixel btn-pixel-outline">
+          <span class="pixel">GET IN TOUCH</span>
+        </a>
+      </div>
 
     </div>
   </section>
@@ -87,170 +79,135 @@
     <div class="container">
 
       <div class="sec-head reveal">
-        <span class="pixel sec-tag">// PLAYER PROFILE</span>
-        <h2 class="sec-title pixel">ABOUT</h2>
+        <span class="pixel sec-tag">// PROFILE</span>
+        <h2 class="sec-title pixel">ABOUT ME</h2>
       </div>
 
       <div class="about-grid">
         <div class="about-card pixel-border reveal">
-          <div class="card-header pixel">PLAYER STATS</div>
+          <div class="card-header pixel">BACKGROUND</div>
           <ul class="stat-list">
             <li><span class="stat-k">NAME</span><span class="stat-v">Omprakash Sahoo</span></li>
-            <li><span class="stat-k">PRONOUNS</span><span class="stat-v">He / Him</span></li>
-            <li><span class="stat-k">COLLEGE</span><span class="stat-v">Bharati Vidyapeeth</span></li>
+            <li><span class="stat-k">UNIVERSITY</span><span class="stat-v">Bharati Vidyapeeth</span></li>
             <li><span class="stat-k">MAJOR</span><span class="stat-v">Computer Science</span></li>
             <li><span class="stat-k">LOCATION</span><span class="stat-v">Thane, Maharashtra, India</span></li>
             <li><span class="stat-k">FOCUS</span><span class="stat-v">C++ &amp; Web Development</span></li>
-            <li><span class="stat-k">STATUS</span><span class="stat-v blink-text">▶ AVAILABLE</span></li>
+            <li><span class="stat-k">STATUS</span><span class="stat-v">Available for Opportunities</span></li>
           </ul>
         </div>
 
         <div class="about-bio reveal">
           <p class="bio-text">
             I'm a Computer Science student at <strong>Bharati Vidyapeeth</strong> passionate about 
-            <strong>C++</strong> and <strong>Web Development</strong>.
+            <strong>C++</strong>, <strong>Data Structures</strong>, and <strong>Web Development</strong>.
           </p>
           <p class="bio-text">
-            I focus on sharpening my core programming and algorithmic problem-solving skills 
-            while actively exploring modern web technologies to build efficient, responsive, 
-            and interactive digital experiences.
+            I focus on writing clean, structured code and strengthening my fundamental problem-solving 
+            abilities. Simultaneously, I build responsive, functional web applications using modern web standards.
           </p>
-
-          <!-- HP / XP bars -->
-          <div class="bars">
-            <div class="bar-row">
-              <span class="bar-label pixel">C++</span>
-              <div class="bar-track"><div class="bar-fill" style="--w:88%"></div></div>
-              <span class="bar-num">88</span>
-            </div>
-            <div class="bar-row">
-              <span class="bar-label pixel">WEB</span>
-              <div class="bar-track"><div class="bar-fill" style="--w:85%"></div></div>
-              <span class="bar-num">85</span>
-            </div>
-            <div class="bar-row">
-              <span class="bar-label pixel">DSA</span>
-              <div class="bar-track"><div class="bar-fill" style="--w:82%"></div></div>
-              <span class="bar-num">82</span>
-            </div>
-          </div>
+          <p class="bio-text">
+            Always eager to collaborate on software engineering projects, contribute to open source, and tackle 
+            challenging technical problems.
+          </p>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- ══════════════════════ SKILLS / POWER-UPS ════════════════ -->
+  <!-- ══════════════════════ TECHNICAL SKILLS ═══════════════════ -->
   <section id="skills" class="section section-alt">
     <div class="container">
 
       <div class="sec-head reveal">
-        <span class="pixel sec-tag">// INVENTORY</span>
-        <h2 class="sec-title pixel">POWER-UPS</h2>
-        <p class="sec-desc">Core competencies, programming languages &amp; web tools.</p>
+        <span class="pixel sec-tag">// TECH STACK</span>
+        <h2 class="sec-title pixel">TECHNICAL SKILLS</h2>
+        <p class="sec-desc">Core languages, tools, and technical competencies.</p>
       </div>
 
-      <div class="powerup-grid">
+      <div class="skills-clean-grid">
 
-        <div class="powerup reveal" style="--delay:.00s">
-          <div class="pu-icon">⚡</div>
-          <div class="pu-name pixel">C++</div>
-          <div class="pu-tier pixel">CORE</div>
-          <div class="pu-stars">★★★★★</div>
+        <div class="skill-clean-card reveal">
+          <div class="skill-clean-header">
+            <span class="skill-clean-icon">⚡</span>
+            <h3 class="skill-clean-title pixel">C++</h3>
+          </div>
+          <p class="skill-clean-desc">Object-oriented programming, standard template library (STL), algorithmic problem solving.</p>
         </div>
 
-        <div class="powerup reveal" style="--delay:.05s">
-          <div class="pu-icon">🧩</div>
-          <div class="pu-name pixel">Problem Solving</div>
-          <div class="pu-tier pixel">CORE</div>
-          <div class="pu-stars">★★★★★</div>
+        <div class="skill-clean-card reveal">
+          <div class="skill-clean-header">
+            <span class="skill-clean-icon">⚙️</span>
+            <h3 class="skill-clean-title pixel">Data Structures</h3>
+          </div>
+          <p class="skill-clean-desc">Arrays, linked lists, stacks, queues, trees, graphs, and algorithmic complexity.</p>
         </div>
 
-        <div class="powerup reveal" style="--delay:.10s">
-          <div class="pu-icon">🌐</div>
-          <div class="pu-name pixel">Web Dev</div>
-          <div class="pu-tier pixel">LVL 85</div>
-          <div class="pu-stars">★★★★☆</div>
+        <div class="skill-clean-card reveal">
+          <div class="skill-clean-header">
+            <span class="skill-clean-icon">🌐</span>
+            <h3 class="skill-clean-title pixel">Web Development</h3>
+          </div>
+          <p class="skill-clean-desc">Building responsive, accessible, mobile-friendly websites and web applications.</p>
         </div>
 
-        <div class="powerup reveal" style="--delay:.15s">
-          <div class="pu-icon">📜</div>
-          <div class="pu-name pixel">JavaScript</div>
-          <div class="pu-tier pixel">LVL 85</div>
-          <div class="pu-stars">★★★★☆</div>
+        <div class="skill-clean-card reveal">
+          <div class="skill-clean-header">
+            <span class="skill-clean-icon">📜</span>
+            <h3 class="skill-clean-title pixel">JavaScript</h3>
+          </div>
+          <p class="skill-clean-desc">DOM manipulation, ES6+ features, asynchronous programming, modern client scripting.</p>
         </div>
 
-        <div class="powerup reveal" style="--delay:.20s">
-          <div class="pu-icon">🎨</div>
-          <div class="pu-name pixel">HTML5 / CSS3</div>
-          <div class="pu-tier pixel">MAX LVL</div>
-          <div class="pu-stars">★★★★★</div>
+        <div class="skill-clean-card reveal">
+          <div class="skill-clean-header">
+            <span class="skill-clean-icon">🎨</span>
+            <h3 class="skill-clean-title pixel">HTML5 / CSS3</h3>
+          </div>
+          <p class="skill-clean-desc">Semantic markup, responsive grid/flexbox layouts, custom UI styling, and animations.</p>
         </div>
 
-        <div class="powerup reveal" style="--delay:.25s">
-          <div class="pu-icon">⚙️</div>
-          <div class="pu-name pixel">Data Structures</div>
-          <div class="pu-tier pixel">LVL 80</div>
-          <div class="pu-stars">★★★★☆</div>
-        </div>
-
-        <div class="powerup reveal" style="--delay:.30s">
-          <div class="pu-icon">🔀</div>
-          <div class="pu-name pixel">Git &amp; GitHub</div>
-          <div class="pu-tier pixel">LVL 85</div>
-          <div class="pu-stars">★★★★☆</div>
-        </div>
-
-        <div class="powerup reveal" style="--delay:.35s">
-          <div class="pu-icon">🚀</div>
-          <div class="pu-name pixel">Vercel Deploy</div>
-          <div class="pu-tier pixel">LVL 80</div>
-          <div class="pu-stars">★★★★☆</div>
-        </div>
-
-        <div class="powerup reveal" style="--delay:.40s">
-          <div class="pu-icon">🎓</div>
-          <div class="pu-name pixel">CS Student</div>
-          <div class="pu-tier pixel">SPECIAL</div>
-          <div class="pu-stars">★★★★★</div>
+        <div class="skill-clean-card reveal">
+          <div class="skill-clean-header">
+            <span class="skill-clean-icon">🔀</span>
+            <h3 class="skill-clean-title pixel">Git &amp; GitHub</h3>
+          </div>
+          <p class="skill-clean-desc">Version control, repository management, branch workflows, and deployment automation.</p>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- ══════════════════════ PROJECTS / LEVELS ══════════════════ -->
+  <!-- ══════════════════════ PROJECTS ═══════════════════════════ -->
   <section id="projects" class="section">
     <div class="container">
 
       <div class="sec-head reveal">
-        <span class="pixel sec-tag">// WORLD MAP</span>
-        <h2 class="sec-title pixel">LEVELS</h2>
-        <p class="sec-desc">Projects &amp; engineering quests. Click to explore.</p>
+        <span class="pixel sec-tag">// PORTFOLIO</span>
+        <h2 class="sec-title pixel">FEATURED PROJECTS</h2>
+        <p class="sec-desc">Production code, applications, and source repositories.</p>
       </div>
 
       <div class="levels-grid">
 
         <article class="level-card reveal" style="--delay:.00s">
-          <div class="level-badge pixel">01</div>
-          <div class="level-status pixel completed">✔ CLEARED</div>
+          <div class="level-badge pixel">PROJECT 01</div>
+          <div class="level-status pixel completed">LIVE</div>
           <h3 class="level-name pixel">RETRO PORTFOLIO</h3>
           <p class="level-desc">
-            An 8-bit retro video game portfolio with smooth pixel-wipe theme transitions, 
-            interactive HUD, security headers, and an authenticated admin panel.
+            A responsive personal portfolio website with custom pixel-wipe dark/light transitions, 
+            security headers, and an authenticated administrative dashboard.
           </p>
           <div class="level-tags">
             <span class="tag">HTML5</span>
             <span class="tag">CSS3</span>
             <span class="tag">JavaScript</span>
             <span class="tag">Vercel</span>
-          </div>
-          <div class="level-difficulty">
-            <span class="pixel diff-label">DIFF</span>
-            <span class="stars">★★★★★</span>
+            <span class="tag">Git</span>
           </div>
           <div class="level-links">
-            <a href="https://github.com/omprkx-hq/retro-portfolio" target="_blank" rel="noopener" class="lvl-btn lvl-btn-ghost pixel">{ REPO }</a>
+            <a href="https://github.com/omprkx-hq/retro-portfolio" target="_blank" rel="noopener" class="lvl-btn lvl-btn-ghost pixel">{ VIEW REPOSITORY }</a>
           </div>
         </article>
 
@@ -258,14 +215,14 @@
     </div>
   </section>
 
-  <!-- ══════════════════════ CONTINUE SCREEN / CONTACT ═════════ -->
+  <!-- ══════════════════════ CONTACT ═══════════════════════════ -->
   <section id="contact" class="section section-alt">
     <div class="container">
 
       <div class="sec-head reveal">
-        <span class="pixel sec-tag">// CONTINUE?</span>
+        <span class="pixel sec-tag">// GET IN TOUCH</span>
         <h2 class="sec-title pixel">CONTACT</h2>
-        <p class="sec-desc">Looking for opportunities, collaborations, or connections? Let's talk.</p>
+        <p class="sec-desc">Feel free to reach out for inquiries, discussions, or opportunities.</p>
       </div>
 
       <div class="contact-wrap">
@@ -279,28 +236,28 @@
             </div>
           </div>
           <div class="contact-item">
-            <span class="ci-icon pixel">[LI]</span>
+            <span class="ci-icon pixel">[in]</span>
             <div>
               <strong>LinkedIn</strong>
               <p><a href="https://www.linkedin.com/in/omprakash-sahoo-a13449376/" target="_blank" rel="noopener">linkedin.com/in/omprakash-sahoo-a13449376</a></p>
             </div>
           </div>
           <div class="contact-item">
-            <span class="ci-icon pixel">[GH]</span>
+            <span class="ci-icon pixel">[git]</span>
             <div>
               <strong>GitHub</strong>
               <p><a href="https://github.com/omprkx-hq" target="_blank" rel="noopener">github.com/omprkx-hq</a></p>
             </div>
           </div>
           <div class="contact-item">
-            <span class="ci-icon pixel">[📍]</span>
+            <span class="ci-icon pixel">[loc]</span>
             <div>
               <strong>Location</strong>
               <p>Thane, Maharashtra, India</p>
             </div>
           </div>
           <div class="contact-item">
-            <span class="ci-icon pixel">[🎓]</span>
+            <span class="ci-icon pixel">[edu]</span>
             <div>
               <strong>Education</strong>
               <p>Bharati Vidyapeeth — Computer Science</p>
@@ -310,7 +267,7 @@
 
         <form class="contact-form pixel-border reveal" id="contactForm">
           <div class="form-group">
-            <label class="pixel" for="name">PLAYER NAME</label>
+            <label class="pixel" for="name">NAME</label>
             <input type="text" id="name" name="name" placeholder="Your name" required />
           </div>
           <div class="form-group">
@@ -319,10 +276,10 @@
           </div>
           <div class="form-group">
             <label class="pixel" for="message">MESSAGE</label>
-            <textarea id="message" name="message" rows="5" placeholder="Drop your quest or message here…" required></textarea>
+            <textarea id="message" name="message" rows="5" placeholder="Your message here…" required></textarea>
           </div>
           <button type="submit" class="btn-pixel btn-full">
-            <span class="pixel">▶ SEND MESSAGE</span>
+            <span class="pixel">SEND MESSAGE</span>
           </button>
           <p class="form-note pixel" id="formNote"></p>
         </form>
@@ -331,14 +288,13 @@
     </div>
   </section>
 
-  <!-- ══════════════════════ GAME OVER / FOOTER ════════════════ -->
+  <!-- ══════════════════════ FOOTER ═════════════════════════════ -->
   <footer class="footer">
     <div class="container footer-inner">
       <span class="pixel footer-logo">OMPRAKASH SAHOO</span>
       <p class="pixel footer-copy">
-        © 2027 · ALL RIGHTS RESERVED · MADE WITH ♥ &amp; ☕
+        © 2027 · ALL RIGHTS RESERVED · BHARATI VIDYAPEETH
       </p>
-      <p class="footer-sub pixel blink-text">GAME OVER — INSERT COIN TO PLAY AGAIN</p>
     </div>
   </footer>
 
