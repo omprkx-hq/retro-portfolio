@@ -851,21 +851,163 @@ body.theme-transitioning * {
 .footer-copy { font-size: .4rem; color: var(--fg-muted); letter-spacing: .1em; }
 .footer-sub  { font-size: .38rem; color: var(--fg-faint); letter-spacing: .1em; margin-top: .25rem; }
 
-/* ── 15. RESPONSIVE ───────────────────────────────────────────── */
-@media (max-width: 860px) {
-  :root { --gap: 4.5rem; }
+/* ── 15. COMPREHENSIVE RESPONSIVE DESIGN (ALL DEVICES & ANDROID) ─── */
+@media (max-width: 992px) {
+  :root { --gap: 4rem; }
   .hud-links { display: none; }
   .hamburger { display: flex; }
-  .about-grid   { grid-template-columns: 1fr; }
-  .contact-wrap { grid-template-columns: 1fr; gap: 2rem; }
-  .hud-score { display: none; }
+  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .contact-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
 }
 
-@media (max-width: 540px) {
-  .hero-title span:first-child { font-size: clamp(1.6rem, 12vw, 3rem); }
-  .hero-sur { font-size: clamp(1.1rem, 8vw, 2rem) !important; }
-  .sec-title { font-size: clamp(1rem, 6vw, 1.6rem); }
-  .powerup-grid { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 600px) {
+  :root {
+    --gap: 3.5rem;
+    font-size: 15px;
+  }
+
+  .container {
+    padding: 0 1.2rem;
+  }
+
+  #hud .hud-inner {
+    padding: 0.8rem 1.2rem;
+  }
+
+  #hero {
+    min-height: auto;
+    padding: 6.5rem 1.2rem 3.5rem;
+  }
+
+  .hero-title span:first-child {
+    font-size: clamp(1.8rem, 8.5vw, 2.6rem);
+    word-break: break-word;
+  }
+
+  .hero-sur {
+    font-size: clamp(1.3rem, 6.5vw, 1.8rem) !important;
+  }
+
+  .hero-role {
+    gap: 0.5rem;
+    flex-direction: column;
+  }
+
+  .hero-role span {
+    font-size: 0.55rem;
+    line-height: 1.4;
+  }
+
+  .hero-sub {
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  .hero-actions {
+    width: 100%;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .hero-actions .btn-pixel {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .sec-title {
+    font-size: clamp(1.15rem, 5.5vw, 1.6rem);
+  }
+
+  .sec-tag {
+    font-size: 0.48rem;
+  }
+
+  .sec-desc {
+    font-size: 0.84rem;
+  }
+
+  .skills-clean-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .skill-clean-card {
+    padding: 1.3rem 1.1rem;
+  }
+
+  .about-card {
+    padding: 1.3rem 1.1rem;
+  }
+
+  .stat-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    padding-bottom: 0.6rem;
+  }
+
+  .stat-k {
+    font-size: 0.48rem;
+    color: var(--fg-muted);
+  }
+
+  .stat-v {
+    font-size: 0.86rem;
+    word-break: break-word;
+  }
+
+  .level-card {
+    padding: 1.3rem 1.1rem;
+  }
+
+  .level-name {
+    font-size: 0.82rem;
+  }
+
+  .level-links {
+    flex-direction: column;
+  }
+
+  .lvl-btn {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 0.48rem;
+    padding: 0.75rem 1rem;
+    text-align: center;
+  }
+
+  .contact-form {
+    padding: 1.3rem 1.1rem;
+  }
+
+  .contact-item {
+    gap: 0.8rem;
+  }
+
+  .contact-item p {
+    word-break: break-all;
+    font-size: 0.84rem;
+  }
+
+  .footer {
+    padding: 2.2rem 1.2rem;
+  }
+
+  .footer-logo {
+    font-size: 0.65rem;
+  }
+
+  .footer-copy {
+    font-size: 0.48rem;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 380px) {
+  :root { font-size: 14px; }
+  .hero-title span:first-child { font-size: 1.5rem; }
+  .hero-sur { font-size: 1.15rem !important; }
 }
 
 /* ── 16. FOCUS ────────────────────────────────────────────────── */
