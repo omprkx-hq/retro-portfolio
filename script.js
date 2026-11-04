@@ -264,51 +264,7 @@ form.addEventListener('submit', e => {
   }, 1300);
 });
 
-/* ── 9. RETRO CURSOR TRAIL ───────────────────────────────────── */
-// Tiny pixel squares follow the cursor
-const trail = [];
-const TRAIL_LEN = 8;
 
-for (let i = 0; i < TRAIL_LEN; i++) {
-  const dot = document.createElement('div');
-  dot.style.cssText = `
-    position: fixed; pointer-events: none; z-index: 9999;
-    width: 4px; height: 4px;
-    background: var(--fg);
-    opacity: 0;
-    transition: opacity .2s;
-    image-rendering: pixelated;
-  `;
-  document.body.appendChild(dot);
-  trail.push({ el: dot, x: 0, y: 0 });
-}
-
-let mouseX = 0, mouseY = 0;
-document.addEventListener('mousemove', e => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-});
-
-let trailFrame;
-function animTrail() {
-  let x = mouseX, y = mouseY;
-  trail.forEach((t, i) => {
-    const prev = i === 0 ? { x: mouseX, y: mouseY } : trail[i - 1];
-    t.x += (prev.x - t.x) * 0.5;
-    t.y += (prev.y - t.y) * 0.5;
-    t.el.style.left = `${Math.round(t.x / 4) * 4}px`;
-    t.el.style.top  = `${Math.round(t.y / 4) * 4}px`;
-    t.el.style.opacity = String(1 - i / TRAIL_LEN);
-  });
-  trailFrame = requestAnimationFrame(animTrail);
-}
-animTrail();
-
-// Hide trail on touch devices
-if (window.matchMedia('(hover: none)').matches) {
-  trail.forEach(t => t.el.remove());
-  cancelAnimationFrame(trailFrame);
-}
 
 /* ── 10. KONAMI CODE EASTER EGG ──────────────────────────────── */
 const KONAMI = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown',

@@ -207,9 +207,8 @@ body.theme-transitioning * {
   pointer-events: none;
 }
 
-/* Blinking text */
-.blink-text { animation: blink 1.1s step-end infinite; }
-@keyframes blink { 50% { opacity: 0; } }
+/* Blinking text removed for clean professional view */
+.blink-text { }
 
 /* ── 5. HUD / NAVBAR ─────────────────────────────────────────── */
 #hud {
@@ -366,20 +365,9 @@ body.theme-transitioning * {
   background: var(--bg);
 }
 
-/* CRT scanlines overlay */
+/* Scanlines removed for clean professional view */
 .scanlines {
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    transparent,
-    transparent 2px,
-    color-mix(in srgb, var(--fg) 3%, transparent) 2px,
-    color-mix(in srgb, var(--fg) 3%, transparent) 4px
-  );
-  pointer-events: none;
-  z-index: 0;
-  opacity: .6;
+  display: none;
 }
 
 .hero-wrap {
@@ -396,7 +384,6 @@ body.theme-transitioning * {
   font-size: .5rem;
   letter-spacing: .2em;
   color: var(--fg-faint);
-  animation: blink 1.4s step-end infinite;
 }
 
 .hero-lives { display: flex; gap: .6rem; }
