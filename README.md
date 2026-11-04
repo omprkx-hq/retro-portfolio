@@ -1,6 +1,6 @@
-# 🕹️ OMPRAKASH SAHOO — Retro Game Portfolio
+# 🕹️ OM PRAKASH SAHOO — Retro Game Portfolio
 
-A retro-game themed personal portfolio website with pixel aesthetics, Press Start 2P font, and a secure admin panel for Omprakash Sahoo (CSE @ OUTR Bhubaneswar).
+A retro-game themed personal portfolio website with pixel aesthetics, Press Start 2P font, and a secure admin panel for **Om Prakash Sahoo** (Creative Frontend Developer &amp; UI/UX Designer, Co-Founder @ YUVAH, Top Ideathon Finalist).
 
 ---
 
