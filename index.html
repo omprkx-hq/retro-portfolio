@@ -13,6 +13,8 @@
 <body>
 
   <!-- ══════════════════════ HUD / NAV ══════════════════════════ -->
+  <div id="scrollProgressBar" aria-hidden="true"></div>
+
   <nav id="hud">
     <div class="hud-inner">
       <span class="hud-logo pixel">OP</span>
@@ -21,8 +23,6 @@
         <span class="hud-label">SCORE</span>
         <span class="hud-val pixel" id="scoreDisplay">000000</span>
       </div>
-
-      <div class="hud-chapter pixel" id="hudChapter">LVL 01 // INTRO</div>
 
       <ul class="hud-links">
         <li><a href="#about">ABOUT</a></li>
@@ -48,7 +48,6 @@
       <a href="#projects" class="mob-link">LEVELS</a>
       <a href="#contact"  class="mob-link">CONTACT</a>
     </div>
-    <div class="hud-progress-line" id="hudProgressLine"></div>
   </nav>
 
   <!-- ══════════════════════ HERO ═══════════════════════════════ -->
@@ -82,20 +81,11 @@
         <span class="pixel">▶ EXPLORE WORK</span>
       </a>
 
-      <!-- Minimalist Scroll Cue -->
-      <div class="hero-scroll-cue reveal" id="heroScrollCue">
-        <span class="pixel cue-label">SCROLL</span>
-        <div class="cue-pill">
-          <div class="cue-dot"></div>
-        </div>
-      </div>
-
     </div>
   </section>
 
   <!-- ══════════════════════ ABOUT ══════════════════════════════ -->
-  <section id="about" class="section section-rel">
-    <div class="section-watermark pixel" data-speed="0.12" aria-hidden="true">01</div>
+  <section id="about" class="section">
     <div class="container">
 
       <div class="sec-head reveal">
@@ -153,8 +143,7 @@
   </section>
 
   <!-- ══════════════════════ SKILLS / POWER-UPS ════════════════ -->
-  <section id="skills" class="section section-alt section-rel">
-    <div class="section-watermark pixel" data-speed="0.12" aria-hidden="true">02</div>
+  <section id="skills" class="section section-alt">
     <div class="container">
 
       <div class="sec-head reveal">
@@ -233,8 +222,7 @@
   </section>
 
   <!-- ══════════════════════ PROJECTS / LEVELS ══════════════════ -->
-  <section id="projects" class="section section-rel">
-    <div class="section-watermark pixel" data-speed="0.12" aria-hidden="true">03</div>
+  <section id="projects" class="section">
     <div class="container">
 
       <div class="sec-head reveal">
@@ -273,8 +261,7 @@
   </section>
 
   <!-- ══════════════════════ CONTINUE SCREEN / CONTACT ═════════ -->
-  <section id="contact" class="section section-alt section-rel">
-    <div class="section-watermark pixel" data-speed="0.12" aria-hidden="true">04</div>
+  <section id="contact" class="section section-alt">
     <div class="container">
 
       <div class="sec-head reveal">

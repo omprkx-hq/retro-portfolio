@@ -1,10 +1,10 @@
 /* ═══════════════════════════════════════════════════════════════
-   OMPRAKASH SAHOO — Retro Game Portfolio
-   script.js — High-end Smooth Scroll & Interaction Engine
+   PLAYER ONE — Retro Game Portfolio
+   script.js
    ═══════════════════════════════════════════════════════════════ */
 'use strict';
 
-/* ── 1. THEME TOGGLE WITH SMOOTH WIPE ───────────────────────── */
+/* ── 1. THEME TOGGLE WITH ANIMATION ─────────────────────────── */
 const html        = document.documentElement;
 const themeToggle = document.getElementById('themeToggle');
 
@@ -50,6 +50,7 @@ function spawnRays(x, y) {
 }
 
 function pixelWipeIn(cells, onMid) {
+  // Staggered diagonal wave reveal
   return new Promise(resolve => {
     const diag = [];
     for (let r = 0; r < ROWS; r++) {
@@ -60,7 +61,7 @@ function pixelWipeIn(cells, onMid) {
       }
     }
     const maxD   = (ROWS - 1) + (COLS - 1);
-    const step   = 28;
+    const step   = 28; // ms per diagonal wave
     let midCalled = false;
 
     diag.forEach((group, d) => {
@@ -117,29 +118,35 @@ themeToggle.addEventListener('click', async () => {
   const cx      = rect.left + rect.width  / 2;
   const cy      = rect.top  + rect.height / 2;
 
+  // Ripple ring on button
   themeToggle.classList.remove('ripple');
-  void themeToggle.offsetWidth;
+  void themeToggle.offsetWidth; // reflow
   themeToggle.classList.add('ripple');
 
+  // Icon burst animation
   const icon = themeToggle.querySelector(isDark ? '.icon-sun' : '.icon-moon');
   icon.classList.remove('animate');
   void icon.offsetWidth;
   icon.classList.add('animate');
   icon.addEventListener('animationend', () => icon.classList.remove('animate'), { once: true });
 
+  // Particle burst
   if (next === 'dark') spawnStars(cx, cy);
   else                 spawnRays(cx, cy);
 
+  // Prepare wipe
   const cells = Array.from(wipeEl.querySelectorAll('.wipe-cell'));
   wipeEl.style.opacity = '1';
   wipeEl.style.visibility = 'visible';
   cells.forEach(c => { c.style.transform = 'scale(0)'; c.style.animation = 'none'; });
 
   await pixelWipeIn(cells, () => {
+    // Mid-wipe: switch theme while screen is covered
     html.setAttribute('data-theme', next);
     localStorage.setItem('p1-theme', next);
   });
 
+  // Wipe out
   await pixelWipeOut(cells);
 
   wipeEl.style.opacity = '0';
@@ -150,14 +157,16 @@ themeToggle.addEventListener('click', async () => {
   isAnimating = false;
 });
 
-/* ── 2. BUTTER-SMOOTH INERTIAL SCROLL (Lenis Engine) ─────────── */
+/* ── 2. LENIS SMOOTH MOMENTUM SCROLL (KSEN PANCHENKO SYSTEM) ─── */
 let lenis = null;
 if (typeof Lenis !== 'undefined') {
   lenis = new Lenis({
-    duration: 1.15,
+    duration: 1.25,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    orientation: 'vertical',
+    gestureOrientation: 'vertical',
     smoothWheel: true,
-    touchMultiplier: 1.5,
+    touchMultiplier: 1.2,
   });
 
   function raf(time) {
@@ -167,146 +176,106 @@ if (typeof Lenis !== 'undefined') {
   requestAnimationFrame(raf);
 }
 
-// Smooth scroll on anchor link clicks
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', (e) => {
-    const targetId = anchor.getAttribute('href');
-    if (!targetId || targetId === '#') return;
-    const targetEl = document.querySelector(targetId);
-    if (targetEl) {
+/* ── 3. SCROLL PROGRESS & SUBTLE PARALLAX ────────────────────── */
+const progressBar = document.getElementById('scrollProgressBar');
+const hud = document.getElementById('hud');
+const heroWrap = document.querySelector('.hero-wrap');
+const secHeads = document.querySelectorAll('.sec-head');
+
+function handleScroll(scrollPos) {
+  // Update hairline reading bar
+  const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = totalHeight > 0 ? (scrollPos / totalHeight) * 100 : 0;
+  if (progressBar) {
+    progressBar.style.width = `${progress}%`;
+  }
+
+  // Scrolled navbar blur state
+  if (hud) {
+    hud.classList.toggle('scrolled', scrollPos > 40);
+  }
+
+  // Subtle spatial parallax on hero (gentle drift like ksenpanchenko.com)
+  if (heroWrap && scrollPos < window.innerHeight * 1.2) {
+    heroWrap.style.transform = `translate3d(0, ${(scrollPos * 0.15).toFixed(1)}px, 0)`;
+    heroWrap.style.opacity = String(Math.max(0, 1 - (scrollPos / (window.innerHeight * 0.85))));
+  }
+}
+
+if (lenis) {
+  lenis.on('scroll', (e) => {
+    handleScroll(e.scroll);
+  });
+} else {
+  window.addEventListener('scroll', () => handleScroll(window.scrollY), { passive: true });
+}
+
+/* ── 4. SMOOTH SCROLL ANCHORS ────────────────────────────────── */
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (!href || href === '#') return;
+    const target = document.querySelector(href);
+    if (target) {
       e.preventDefault();
       if (lenis) {
-        lenis.scrollTo(targetEl, { offset: -60, duration: 1.2 });
+        lenis.scrollTo(target, { offset: -70, duration: 1.2 });
       } else {
-        targetEl.scrollIntoView({ behavior: 'smooth' });
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+      if (typeof mobileMenu !== 'undefined') {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('open');
       }
     }
   });
 });
 
-/* ── 3. SCROLL-DRIVEN PARALLAX & HUD PROGRESS ────────────────── */
-const hud = document.getElementById('hud');
-const hudChapter = document.getElementById('hudChapter');
-const hudProgressLine = document.getElementById('hudProgressLine');
-const heroWrap = document.querySelector('.hero-wrap');
-const heroScrollCue = document.getElementById('heroScrollCue');
-const watermarks = document.querySelectorAll('.section-watermark');
-
-const chapterNames = {
-  hero:     'LVL 01 // INTRO',
-  about:    'LVL 02 // PROFILE',
-  skills:   'LVL 03 // POWER-UPS',
-  projects: 'LVL 04 // LEVELS',
-  contact:  'LVL 05 // TRANSMIT'
-};
-
-function onScrollFrame(scrollY) {
-  // Scrolled HUD styling
-  hud.classList.toggle('scrolled', scrollY > 30);
-
-  // Top progress line (0% to 100%)
-  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-  if (maxScroll > 0 && hudProgressLine) {
-    const pct = Math.min(100, Math.max(0, (scrollY / maxScroll) * 100));
-    hudProgressLine.style.width = `${pct}%`;
-  }
-
-  // Hero parallax drift and fade
-  if (heroWrap) {
-    if (scrollY < 600) {
-      const heroY = scrollY * 0.32;
-      const heroOpacity = Math.max(0, 1 - (scrollY / 450));
-      heroWrap.style.transform = `translate3d(0, ${heroY.toFixed(1)}px, 0)`;
-      heroWrap.style.opacity = heroOpacity.toFixed(2);
-    }
-  }
-
-  // Fade out hero scroll cue
-  if (heroScrollCue) {
-    if (scrollY > 40) {
-      heroScrollCue.style.opacity = '0';
-      heroScrollCue.style.pointerEvents = 'none';
-    } else {
-      heroScrollCue.style.opacity = '0.8';
-      heroScrollCue.style.pointerEvents = 'auto';
-    }
-  }
-
-  // Section watermarks subtle parallax
-  watermarks.forEach(wm => {
-    const parent = wm.closest('section');
-    if (!parent) return;
-    const rect = parent.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
-      const speed = parseFloat(wm.getAttribute('data-speed') || '0.12');
-      const offset = (window.innerHeight - rect.top) * speed;
-      wm.style.transform = `translate3d(0, ${offset.toFixed(1)}px, 0)`;
-    }
-  });
-}
-
-// Hook into Lenis or native scroll
-if (lenis) {
-  lenis.on('scroll', ({ scroll }) => onScrollFrame(scroll));
-} else {
-  window.addEventListener('scroll', () => onScrollFrame(window.scrollY), { passive: true });
-}
-onScrollFrame(window.scrollY);
-
-/* ── 4. DYNAMIC CHAPTER TRACKER (Intersection Observer) ──────── */
-const sectionElements = document.querySelectorAll('section[id]');
-const chapterObserver = new IntersectionObserver(
-  entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.id;
-        if (hudChapter && chapterNames[id]) {
-          hudChapter.textContent = chapterNames[id];
-        }
-        document.querySelectorAll('.hud-links a').forEach(a => {
-          a.classList.toggle('nav-active', a.getAttribute('href') === `#${id}`);
-        });
-      }
-    });
-  },
-  { rootMargin: '-30% 0px -40% 0px' }
-);
-sectionElements.forEach(sec => chapterObserver.observe(sec));
-
-/* ── 5. SCORE COUNTER (Game HUD effect) ──────────────────────── */
+/* ── 5. SCORE COUNTER (cosmetic) ─────────────────────────────── */
 const scoreEl = document.getElementById('scoreDisplay');
 let score = 0;
 const targetScore = 142857;
-const dur = 2000;
+const dur = 2200;
 const start = performance.now();
 
 function animScore(ts) {
   const p = Math.min((ts - start) / dur, 1);
   const e = 1 - Math.pow(1 - p, 3);
   score = Math.round(targetScore * e);
-  scoreEl.textContent = String(score).padStart(6, '0');
+  if (scoreEl) scoreEl.textContent = String(score).padStart(6, '0');
   if (p < 1) requestAnimationFrame(animScore);
 }
 requestAnimationFrame(animScore);
 
-/* ── 6. MOBILE HAMBURGER ─────────────────────────────────────── */
+/* ── 6. HAMBURGER & MOBILE NAV ───────────────────────────────── */
 const hamburger  = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
 
-hamburger.addEventListener('click', () => {
-  const open = mobileMenu.classList.toggle('open');
-  hamburger.classList.toggle('open', open);
-  hamburger.setAttribute('aria-expanded', String(open));
+if (hamburger && mobileMenu) {
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+  });
+
+  document.querySelectorAll('.mob-link').forEach(link =>
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+    })
+  );
+}
+
+/* ── 7. STAGGERED SCROLL REVEAL (KSEN PANCHENKO SYSTEM) ───────── */
+// Assign staggered delays to child items in grids for cascading entry
+document.querySelectorAll('.powerup-grid .powerup').forEach((el, i) => {
+  el.style.setProperty('--delay', `${(i * 0.05).toFixed(2)}s`);
 });
 
-document.querySelectorAll('.mob-link').forEach(link =>
-  link.addEventListener('click', () => {
-    mobileMenu.classList.remove('open');
-    hamburger.classList.remove('open');
-  })
-);
+document.querySelectorAll('.levels-grid .level-card').forEach((el, i) => {
+  el.style.setProperty('--delay', `${(i * 0.08).toFixed(2)}s`);
+});
 
-/* ── 7. SCROLL REVEALS ───────────────────────────────────────── */
 const reveals = document.querySelectorAll('.reveal');
 const revealObs = new IntersectionObserver(
   entries => entries.forEach(e => {
@@ -315,11 +284,11 @@ const revealObs = new IntersectionObserver(
       revealObs.unobserve(e.target);
     }
   }),
-  { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
+  { threshold: 0.12, rootMargin: '0px 0px -50px 0px' }
 );
 reveals.forEach(el => revealObs.observe(el));
 
-/* ── 8. HP/XP BAR FILL ANIMATION ────────────────────────────── */
+/* ── 8. HP/XP BAR ANIMATE ON REVEAL ─────────────────────────── */
 document.querySelectorAll('.bar-fill').forEach(bar => {
   const target = bar.style.getPropertyValue('--w');
   bar.style.setProperty('--w', '0%');
@@ -335,26 +304,46 @@ document.querySelectorAll('.bar-fill').forEach(bar => {
   barObs.observe(bar);
 });
 
-/* ── 9. CONTACT FORM ─────────────────────────────────────────── */
+/* ── 9. ACTIVE NAV LINK ON SCROLL ────────────────────────────── */
+const sections = document.querySelectorAll('section[id]');
+const navObs = new IntersectionObserver(
+  entries => entries.forEach(e => {
+    if (e.isIntersecting) {
+      document.querySelectorAll('.hud-links a').forEach(a =>
+        a.classList.toggle(
+          'nav-active',
+          a.getAttribute('href') === `#${e.target.id}`
+        )
+      );
+    }
+  }),
+  { rootMargin: '-35% 0px -45% 0px' }
+);
+sections.forEach(s => navObs.observe(s));
+
+/* ── 10. CONTACT FORM ────────────────────────────────────────── */
 const form     = document.getElementById('contactForm');
 const formNote = document.getElementById('formNote');
 
-form.addEventListener('submit', e => {
-  e.preventDefault();
-  const btn = form.querySelector('button[type="submit"] span');
-  btn.textContent = '▶ SENDING…';
-  form.querySelector('button').disabled = true;
+if (form) {
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"] span');
+    if (btn) btn.textContent = '▶ SENDING…';
+    const subBtn = form.querySelector('button[type="submit"]');
+    if (subBtn) subBtn.disabled = true;
 
-  setTimeout(() => {
-    formNote.textContent = '✔ MESSAGE SENT! QUEST ACCEPTED.';
-    form.reset();
-    btn.textContent = '▶ SEND MESSAGE';
-    form.querySelector('button').disabled = false;
-    setTimeout(() => { formNote.textContent = ''; }, 5000);
-  }, 1200);
-});
+    setTimeout(() => {
+      if (formNote) formNote.textContent = '✔ MESSAGE SENT! QUEST ACCEPTED.';
+      form.reset();
+      if (btn) btn.textContent = '▶ SEND MESSAGE';
+      if (subBtn) subBtn.disabled = false;
+      setTimeout(() => { if (formNote) formNote.textContent = ''; }, 5000);
+    }, 1200);
+  });
+}
 
-/* ── 10. KONAMI CODE EASTER EGG ──────────────────────────────── */
+/* ── 11. KONAMI CODE EASTER EGG ──────────────────────────────── */
 const KONAMI = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown',
                 'ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
 let konamiIdx = 0;
@@ -383,10 +372,12 @@ function triggerKonami() {
     z-index: 9999;
     text-align: center;
     line-height: 2.2;
-    border: 3px solid var(--fg-muted);
-    box-shadow: 8px 8px 0 var(--fg-muted);
+    border: 2px solid var(--border);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.5);
   `;
   msg.innerHTML = '★ CHEAT CODE ACTIVATED ★<br>+30 LIVES ADDED<br>ALL LEVELS UNLOCKED';
   document.body.appendChild(msg);
   setTimeout(() => msg.remove(), 4000);
 }
+
+
